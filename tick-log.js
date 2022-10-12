@@ -4,7 +4,10 @@ const logCounter = {
 }
 
 if (process && (!(process.stdout.isTTY))) for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
-const writeFunction = process ? process.stdout.write : console.log;
+const writeFunction = (p) => {
+	if (process) process.stdout.write(p)
+	else console.log(p)
+}
 const lastEnter = process ? "\n" : "";
 
 const commonWrite = (p_text, p_colors) => {
