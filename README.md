@@ -23,10 +23,10 @@ tickLog.error('This is the ERROR log message');
 
 | Name  | Description |
 |-------|-------------|
-|start| Uses yellow label when the outpus is TTY|
-|info| Uses blue label when the outpus is TTY|
-|success| Uses green label when the outpus is TTY|
-|error| Uses red background label when the outpus is TTY|
+|start| Uses yellow label when the output is TTY|
+|info| Uses blue label when the output is TTY|
+|success| Uses green label when the output is TTY|
+|error| Uses red background label when the output is TTY|
 
 ## License
 
