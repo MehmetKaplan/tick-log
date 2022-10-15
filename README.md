@@ -1,6 +1,6 @@
-This is a ultra-lightweight, pure javascript library which gives colored log data for both node and browser.
+This is an ultra-lightweight, pure javascript library which gives colored log data for both node and browser.
 
-If output is not TTY colors are suppressed so that log can still be human readable. 
+If output is not TTY colors are suppressed so that the logs can still be human readable. 
 
 
 ## Installation
