@@ -10,7 +10,7 @@ const useColor = {
 const forceColor = (p) => { useColor.forced = p }
 
 if (process
-	&& (!(process.stdout.isTTY) || useColor.forced)
+	&& (!(process.stdout.isTTY) || (!(useColor.forced)))
 )
 	for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
 const writeFunction = (p) => {
