@@ -1,18 +1,16 @@
 const textColors = require('./text-colors.js');
+const textColors_ = Object.assign({}, textColors); // dublicate to reuse colors in case of forceColor
 const logCounter = {
 	counter: 1
 }
 
-const useColor = {
-	forced: false
+const forceColor = (p) => {
+	for (let key in textColors) {
+		textColors[key] = p ? textColors_[key] : "";
+	}
 }
 
-const forceColor = (p) => { useColor.forced = p }
-
-if (process
-	&& (!(process.stdout.isTTY) || (!(useColor.forced)))
-)
-	for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
+if (process && (!(process.stdout.isTTY))) for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
 const writeFunction = (p) => {
 	if (process) process.stdout.write(p)
 	else console.log(p)
