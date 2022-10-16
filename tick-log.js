@@ -3,7 +3,16 @@ const logCounter = {
 	counter: 1
 }
 
-if (process && (!(process.stdout.isTTY))) for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
+const useColor = {
+	forced: false
+}
+
+const forceColor = (p) => { useColor.forced = p }
+
+if (process
+	&& (!(process.stdout.isTTY) || useColor.forced)
+)
+	for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
 const writeFunction = (p) => {
 	if (process) process.stdout.write(p)
 	else console.log(p)
@@ -51,5 +60,6 @@ module.exports = {
 	start: start,
 	info: info,
 	success: success,
-	error: error
+	error: error,
+	forceColor: forceColor
 }

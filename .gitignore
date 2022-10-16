@@ -24,3 +24,6 @@ yarn.lock
 **/yarn.lock
 
 .vscode/settings.json
+
+
+publishing.md

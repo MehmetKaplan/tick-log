@@ -27,6 +27,7 @@ tickLog.error('This is the ERROR log message');
 |info| Uses blue label when the output is TTY|
 |success| Uses green label when the output is TTY|
 |error| Uses red background label when the output is TTY|
+|forceColor| When the output is not TTY, pass `true` to still use the coloring. (For browsers coloring still will not apply.)|
 
 ## License
 
