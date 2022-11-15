@@ -1,7 +1,7 @@
 {
 	"name": "tick-log",
-	"description": "A ultra-lightweight, pure javascript library which gives colored log data for both node and browser.",
-	"version": "1.1.2",
+	"description": "An ultra-lightweight, pure javascript library which gives colored log data for both node and browser.",
+	"version": "1.1.3",
 	"private": false,
 	"author": "MehmetKaplan",
 	"license": "MIT",

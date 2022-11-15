@@ -10,9 +10,9 @@ const forceColor = (p) => {
 	}
 }
 
-if (process && (!(process.stdout.isTTY))) for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
+if (process && (!(process?.stdout?.isTTY))) for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
 const writeFunction = (p) => {
-	if (process) process.stdout.write(p)
+	if (process && process?.stdout) process.stdout.write(p)
 	else console.log(p)
 }
 const lastEnter = process ? "\n" : "";
