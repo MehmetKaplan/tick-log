@@ -29,6 +29,13 @@ tickLog.error('This is the ERROR log message');
 |error| Uses red background label when the output is TTY|
 |forceColor| When the output is not TTY, pass `true` to still use the coloring. (For browsers coloring still will not apply.)|
 
+## Common paraters
+
+| Name  | Description |
+|-------|-------------|
+| text | The text to be printed |
+|useProcessStdoutWrite| In some cases `console.log` output is badly formatted (like using `console.log` within jest).<br><br>For such cases you can ask to use `process.stdout.write`. <br><br>If `process.stdout` does not exist this flag is ignored.  (Defaults to false) |
+
 ## License
 
 The license is MIT and full text [here](LICENSE).

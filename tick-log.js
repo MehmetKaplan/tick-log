@@ -4,54 +4,49 @@ const logCounter = {
 	counter: 1
 }
 
+if (process && (!(process?.stdout?.isTTY))) {
+	for (let key in textColors) {
+		if (textColors.hasOwnProperty(key)) { textColors[key] = "" }
+	}
+};
+
 const forceColor = (p) => {
 	for (let key in textColors) {
 		textColors[key] = p ? textColors_[key] : "";
 	}
 }
 
-if (process && (!(process?.stdout?.isTTY))) for (let key in textColors) { if (textColors.hasOwnProperty(key)) { textColors[key] = "" } }
-const writeFunction = (p) => {
-	if (process && process?.stdout) process.stdout.write(p)
-	else console.log(p)
-}
-const lastEnter = process ? "\n" : "";
-
-const commonWrite = (p_text, p_colors) => {
-	for (let i = 0; i < p_colors.length; i++) {
-		writeFunction(p_colors[i]);
-	}
-	writeFunction(p_text);
-	writeFunction(textColors.Color_Off);
-}
-
 const tick = () => {
-	commonWrite(`${logCounter.counter++}`.padStart(3, '0'), [textColors.Cyan_Underline]);
-	writeFunction(` ${new Date().toString()} `);
+	let tickValue = `${logCounter.counter++}`.padStart(3, '0')
+	return `${textColors.Cyan_Underline}${tickValue}${textColors.Color_Off}`
 }
 
-const start = (p_text) => {
-	tick();
-	commonWrite(`Process Starting:`, [textColors.Yellow]);
-	writeFunction(` ${p_text}${lastEnter}`);
+const commonWrite = (label, text, useProcessStdoutWrite) => {
+	let toBeWritten = `${tick()} ${label}${text}`;
+	if (useProcessStdoutWrite && process && process?.stdout) {
+		process.stdout.write(`${toBeWritten}\n`);
+	}
+	else console.log(toBeWritten)
 }
 
-const info = (p_text) => {
-	tick();
-	commonWrite(`Info:`, [textColors.Blue]);
-	writeFunction(` ${p_text}${lastEnter}`);
+const start = (text, useProcessStdoutWrite = false) => {
+	let label = `${textColors.Yellow}Start:${textColors.Color_Off}   `;
+	commonWrite(label, text, useProcessStdoutWrite);
 }
 
-const success = (p_text) => {
-	tick();
-	commonWrite(`Success:`, [textColors.Green]);
-	writeFunction(` ${p_text}${lastEnter}`);
+const info = (text, useProcessStdoutWrite = false) => {
+	let label = `${textColors.Blue}Info:${textColors.Color_Off}    `;
+	commonWrite(label, text, useProcessStdoutWrite);
 }
 
-const error = (p_text) => {
-	tick();
-	commonWrite(`Error:`, [textColors.Yellow, textColors.Red_Background,]);
-	writeFunction(` ${p_text}${lastEnter}`);
+const success = (text, useProcessStdoutWrite = false) => {
+	let label = `${textColors.Green}Success:${textColors.Color_Off} `;
+	commonWrite(label, text, useProcessStdoutWrite);
+}
+
+const error = (text, useProcessStdoutWrite = false) => {
+	let label = `${textColors.Yellow}${textColors.Red_Background}Error:${textColors.Color_Off}   `;
+	commonWrite(label, text, useProcessStdoutWrite);
 }
 
 module.exports = {
